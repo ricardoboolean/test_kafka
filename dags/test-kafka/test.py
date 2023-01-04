@@ -29,9 +29,9 @@ with DAG(
 ):
 
     # define the producer function
-def producer_function():
-    for i in range(5):
-        yield (json.dumps(i), json.dumps(i+1))
+    def producer_function():
+        for i in range(5):
+            yield (json.dumps(i), json.dumps(i+1))
 
     # define the producer task
     producer_task = ProduceToTopicOperator(
