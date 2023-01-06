@@ -7,7 +7,7 @@ from airflow import DAG
 from airflow_provider_kafka.operators.produce_to_topic import ProduceToTopicOperator
 
 # get the topic name from .env
-my_topic = "test"
+my_topic = "test_raw"
 
 # get Kafka configuration information
 connection_config = {
@@ -19,7 +19,7 @@ connection_config = {
 }
 
 with DAG(
-    dag_id="kafka_example_dag_1",
+    dag_id="kafka_raw_test",
     start_date=datetime(2022, 11, 1),
     schedule=None,
     catchup=False,
