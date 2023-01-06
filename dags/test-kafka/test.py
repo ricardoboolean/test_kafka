@@ -1,6 +1,3 @@
-# kafka_example_dag_1.py 
-
-import os
 import json
 import logging
 import functools
@@ -10,15 +7,15 @@ from airflow import DAG
 from airflow_provider_kafka.operators.produce_to_topic import ProduceToTopicOperator
 
 # get the topic name from .env
-my_topic = os.environ["KAFKA_TOPIC_NAME"]
+my_topic = "test"
 
 # get Kafka configuration information
 connection_config = {
-    "bootstrap.servers": os.environ["BOOSTRAP_SERVER"],
-    "security.protocol": os.environ["SECURITY_PROTOCOL"],
+    "bootstrap.servers": "kafka.default:9092",
+    "security.protocol": "PLAINTEXT",
     "sasl.mechanism": "PLAIN",
-    "sasl.username": os.environ["KAFKA_API_KEY"],
-    "sasl.password": os.environ["KAFKA_API_SECRET"]
+    "sasl.username": "None",
+    "sasl.password": "None"
 }
 
 with DAG(
