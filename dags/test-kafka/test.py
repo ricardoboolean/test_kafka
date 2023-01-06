@@ -1,5 +1,5 @@
 import json
-import logging
+import logging 
 import functools
 from pendulum import datetime
 from airflow.models import Variable
