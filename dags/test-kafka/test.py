@@ -21,7 +21,7 @@ connection_config = {
 with DAG(
     dag_id="kafka_raw_test",
     start_date=datetime(2022, 11, 1),
-    schedule="* * * * *",
+    schedule=None,
     catchup=False,
 ):
 
