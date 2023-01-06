@@ -2,16 +2,17 @@ import json
 import logging
 import functools
 from pendulum import datetime
+from airflow.models import Variable
 
 from airflow import DAG
 from airflow_provider_kafka.operators.produce_to_topic import ProduceToTopicOperator
 
 # get the topic name from .env
-my_topic = "test_raw"
+my_topic = Variable.get("kafka_topic")
 
 # get Kafka configuration information
 connection_config = {
-    "bootstrap.servers": "kafka.default:9092",
+    "bootstrap.servers": Variable.get("kafka_brokers"),
     "security.protocol": "PLAINTEXT",
     "sasl.mechanism": "PLAIN",
     "sasl.username": "None",
